@@ -10,18 +10,18 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.List;
 
-import exception.conexaoException;
+import exception.ConexaoException;
 import file.SimpleFile;
 
 public class Cliente {
 	
 	private Socket socket = null; 
 	
-	public Cliente(List<String> enderecosHost, int porta) throws conexaoException {	
+	public Cliente(List<String> enderecosHost, int porta) throws ConexaoException {	
 		
 		this.socket = definirHost(enderecosHost, porta);
 		
-		if(this.socket == null) throw new conexaoException();
+		if(this.socket == null) throw new ConexaoException();
 	}
 	
 	public Socket definirHost(List<String> enderecosHost, int porta) {
@@ -89,7 +89,7 @@ public class Cliente {
 			cliente = new Cliente(f.readFileLines(), 8080);
 			cliente.executar();
 			
-		} catch (conexaoException e) {
+		} catch (ConexaoException e) {
 			e.printStackTrace();
 		}
 	}
